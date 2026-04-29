@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import { MagneticButton } from "./MagneticButton";
-import { WordReveal } from "./Reveal";
 import { useState } from "react";
 import { ContactModal } from "./ContactModal";
 import portrait from "@/assets/elyes-portrait.png";
+import { useTranslation } from "@/i18n/LanguageContext";
 
 export function Hero() {
   const [modal, setModal] = useState(false);
+  const { t } = useTranslation();
 
   const scrollToWork = () => {
     document.getElementById("our-work")?.scrollIntoView({ behavior: "smooth" });
@@ -14,11 +15,9 @@ export function Hero() {
 
   return (
     <section className="grain relative flex min-h-[100svh] items-center overflow-hidden pt-32">
-      {/* Ambient orbs */}
       <div className="ambient-orb -bottom-40 -left-40 h-[600px] w-[600px]" style={{ background: "var(--brand-orange)" }} />
       <div className="ambient-orb -top-40 -right-32 h-[520px] w-[520px]" style={{ background: "var(--brand-gold)", opacity: 0.35 }} />
 
-      {/* Mesh gradient background */}
       <div
         className="pointer-events-none absolute inset-0 opacity-40"
         style={{
@@ -37,42 +36,41 @@ export function Hero() {
             className="mb-6 inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.32em] text-orange"
           >
             <span className="h-px w-10 bg-orange" />
-            Revenue Architecture. Scale by Design.
+            {t("hero.eyebrow")}
           </motion.p>
 
-          <h1 className="font-display text-[16vw] leading-[0.85] tracking-tight sm:text-[12vw] lg:text-[8.5vw] xl:text-[140px]">
-            <span className="block">
-              <WordReveal text="WE BUILD" />
-            </span>
-            <span className="block text-gradient-fire">
-              <WordReveal text="GROWTH MACHINES." delay={0.15} />
-            </span>
-          </h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display text-[14vw] leading-[0.9] tracking-tight text-foreground sm:text-[11vw] lg:text-[8vw] xl:text-[120px]"
+          >
+            <span className="block">{t("hero.line1")}</span>
+            <span className="block text-gradient-fire">{t("hero.line2")}</span>
+          </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.6 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
             className="mt-8 max-w-[560px] text-base text-foreground/70 md:text-lg"
           >
-            Rowaad is the elite growth agency for individuals, professionals, and B2B companies who are
-            done with average results. We don't sell advice — we install systems that move money.
+            {t("hero.sub")}
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.85 }}
+            transition={{ duration: 0.7, delay: 0.6 }}
             className="mt-10 flex flex-wrap items-center gap-4"
           >
-            <MagneticButton onClick={() => setModal(true)}>Book a Strategy Call</MagneticButton>
+            <MagneticButton onClick={() => setModal(true)}>{t("hero.cta1")}</MagneticButton>
             <MagneticButton variant="ghost" onClick={scrollToWork}>
-              Explore Our Work
+              {t("hero.cta2")}
             </MagneticButton>
           </motion.div>
         </div>
 
-        {/* Founder card */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -83,7 +81,7 @@ export function Hero() {
             <div className="absolute inset-0 bg-gradient-to-tr from-onyx via-transparent to-orange/30" />
             <img src={portrait} alt="Elyes Kallel" className="h-full w-full object-cover" />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-onyx via-onyx/70 to-transparent p-6">
-              <p className="text-xs uppercase tracking-[0.2em] text-orange">Founder & CEO</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-orange">{t("hero.founderRole")}</p>
               <p className="font-display text-2xl">Elyes Kallel</p>
             </div>
           </div>

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { store, useStoreSubscription, type Partner } from "@/lib/store";
 import { Reveal } from "./Reveal";
+import { useTranslation } from "@/i18n/LanguageContext";
 
 export function Partners() {
   const [partners, setPartners] = useState<Partner[]>([]);
+  const { t } = useTranslation();
   useEffect(() => {
     const refresh = () => setPartners(store.getPartners().filter((p) => p.visible));
     refresh();
@@ -14,14 +16,14 @@ export function Partners() {
     <section className="relative border-y border-white/5 bg-[#040404] py-24">
       <div className="mx-auto max-w-7xl px-6">
         <Reveal>
-          <p className="text-center text-xs uppercase tracking-[0.32em] text-orange">Trusted by the right people</p>
-          <h2 className="mt-3 text-center font-display text-4xl uppercase md:text-5xl">Partners & Clients</h2>
+          <p className="text-center text-xs uppercase tracking-[0.32em] text-orange">{t("partners.eyebrow")}</p>
+          <h2 className="mt-3 text-center font-display text-4xl uppercase md:text-5xl">{t("partners.title")}</h2>
         </Reveal>
 
         {partners.length === 0 ? (
           <Reveal delay={0.15}>
             <div className="mt-12 flex min-h-[160px] items-center justify-center rounded-2xl border border-dashed border-white/10 text-sm text-muted-foreground">
-              Strategic partnerships are being onboarded.
+              {t("partners.empty")}
             </div>
           </Reveal>
         ) : (
