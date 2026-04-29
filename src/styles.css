@@ -1,16 +1,10 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@import url("https://fonts.bunny.net/css?family=bebas-neue:400|inter:400,500,600,700,800,900");
 
 @custom-variant dark (&:is(.dark *));
 
-@font-face {
-  font-family: "Bebas Neue";
-  src: url("https://fonts.gstatic.com/s/bebasneue/v14/JTUSjIg69CK48gW7PXoo9WlhyyTh89Y.woff2") format("woff2");
-  font-display: swap;
-}
-
-@import url("https://fonts.bunny.net/css?family=bebas-neue:400|inter:400,500,600,700,800,900");
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
