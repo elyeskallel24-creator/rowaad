@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MagneticButton } from "./MagneticButton";
+import { useTranslation } from "@/i18n/LanguageContext";
 
 export type ContactFormData = {
   name: string;
@@ -11,6 +12,7 @@ export type ContactFormData = {
 };
 
 export function ContactForm({ onSubmit }: { onSubmit: (data: ContactFormData) => void }) {
+  const { t } = useTranslation();
   const [data, setData] = useState<ContactFormData>({
     name: "", email: "", whatsapp: "", description: "", date: "", time: "",
   });
@@ -23,10 +25,10 @@ export function ContactForm({ onSubmit }: { onSubmit: (data: ContactFormData) =>
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     const errs: typeof errors = {};
-    if (!data.name.trim()) errs.name = "Required";
-    if (!/^\S+@\S+\.\S+$/.test(data.email)) errs.email = "Valid email required";
-    if (!data.whatsapp.trim()) errs.whatsapp = "Required";
-    if (!data.description.trim()) errs.description = "Required";
+    if (!data.name.trim()) errs.name = t("form.required");
+    if (!/^\S+@\S+\.\S+$/.test(data.email)) errs.email = t("form.invalidEmail");
+    if (!data.whatsapp.trim()) errs.whatsapp = t("form.required");
+    if (!data.description.trim()) errs.description = t("form.required");
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
     onSubmit(data);
@@ -37,40 +39,40 @@ export function ContactForm({ onSubmit }: { onSubmit: (data: ContactFormData) =>
 
   return (
     <form onSubmit={submit} className="mt-8 space-y-4">
-      <Field label="Full Name" error={errors.name}>
+      <Field label={t("form.name")} error={errors.name}>
         <input className={inputCls} value={data.name} onChange={update("name")} placeholder="Jane Doe" />
       </Field>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <Field label="Email" error={errors.email}>
+        <Field label={t("form.email")} error={errors.email}>
           <input className={inputCls} type="email" value={data.email} onChange={update("email")} placeholder="you@company.com" />
         </Field>
-        <Field label="WhatsApp Number" error={errors.whatsapp}>
+        <Field label={t("form.whatsapp")} error={errors.whatsapp}>
           <input className={inputCls} value={data.whatsapp} onChange={update("whatsapp")} placeholder="+216 ..." />
         </Field>
       </div>
 
-      <Field label="Company / What do you need?" error={errors.description}>
+      <Field label={t("form.company")} error={errors.description}>
         <textarea
           className={inputCls + " min-h-[120px] resize-y"}
           value={data.description}
           onChange={update("description")}
-          placeholder="Tell us about your business and goals..."
+          placeholder={t("form.companyPh")}
         />
       </Field>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <Field label="Preferred Date">
+        <Field label={t("form.date")}>
           <input className={inputCls} type="date" value={data.date} onChange={update("date")} />
         </Field>
-        <Field label="Preferred Time">
+        <Field label={t("form.time")}>
           <input className={inputCls} type="time" value={data.time} onChange={update("time")} />
         </Field>
       </div>
 
       <div className="pt-2">
         <MagneticButton type="submit" className="w-full sm:w-auto">
-          Request My Strategy Session
+          {t("form.submit")}
         </MagneticButton>
       </div>
     </form>
