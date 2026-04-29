@@ -32,10 +32,20 @@ export type Partner = {
   order: number;
 };
 
+export type TeamMember = {
+  id: string;
+  name: string;
+  role: string;
+  photo: string; // data URL
+  status: "published" | "draft";
+  order: number;
+};
+
 const KEYS = {
   contacts: "rowaad:contacts",
   projects: "rowaad:projects",
   partners: "rowaad:partners",
+  team: "rowaad_team_members",
 } as const;
 
 const isBrowser = typeof window !== "undefined";
