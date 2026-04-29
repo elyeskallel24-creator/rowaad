@@ -116,6 +116,19 @@ export const store = {
   deletePartner: (id: string) => {
     write(KEYS.partners, read<Partner>(KEYS.partners).filter((p) => p.id !== id));
   },
+
+  // Team
+  getTeam: () => read<TeamMember>(KEYS.team).sort((a, b) => a.order - b.order),
+  saveTeamMember: (m: TeamMember) => {
+    const list = read<TeamMember>(KEYS.team);
+    const idx = list.findIndex((x) => x.id === m.id);
+    if (idx >= 0) list[idx] = m;
+    else list.push(m);
+    write(KEYS.team, list);
+  },
+  deleteTeamMember: (id: string) => {
+    write(KEYS.team, read<TeamMember>(KEYS.team).filter((m) => m.id !== id));
+  },
 };
 
 export function useStoreSubscription(cb: () => void) {
