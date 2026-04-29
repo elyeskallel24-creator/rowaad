@@ -29,11 +29,17 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Rowaad — Revenue Architecture. Scale by Design." },
-      { name: "description", content: "Rowaad is the elite growth agency for high-end B2B companies. We don't sell advice — we install systems that move money." },
+      { title: "Rowaad" },
+      { name: "description", content: "Rowaad is the elite growth agency for high-end B2B companies. We don't sell advice, we install systems that move money." },
       { name: "author", content: "Rowaad" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Rowaad" },
+      { name: "twitter:title", content: "Rowaad" },
+      { property: "og:description", content: "Rowaad is the elite growth agency for high-end B2B companies. We don't sell advice, we install systems that move money." },
+      { name: "twitter:description", content: "Rowaad is the elite growth agency for high-end B2B companies. We don't sell advice, we install systems that move money." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c051dccc-6909-4534-847c-26f439c7dd27/id-preview-d54ee35d--6874d580-8f90-439a-bb78-d546d064fb34.lovable.app-1777485013937.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c051dccc-6909-4534-847c-26f439c7dd27/id-preview-d54ee35d--6874d580-8f90-439a-bb78-d546d064fb34.lovable.app-1777485013937.png" },
     ],
     links: [
       {
