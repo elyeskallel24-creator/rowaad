@@ -1,26 +1,37 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { PageWrap } from "@/components/PageWrap";
+import { Hero } from "@/components/Hero";
+import { Marquee } from "@/components/Marquee";
+import { ServicesScroll } from "@/components/ServicesScroll";
+import { WhyRowaad } from "@/components/WhyRowaad";
+import { OurWork } from "@/components/OurWork";
+import { FounderSection } from "@/components/FounderSection";
+import { Partners } from "@/components/Partners";
+import { InvestSection } from "@/components/InvestSection";
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  component: Home,
+  head: () => ({
+    meta: [
+      { title: "Rowaad — Revenue Architecture. Scale by Design." },
+      { name: "description", content: "Rowaad is the elite growth agency installing revenue systems for high-end B2B companies and operators ready to scale." },
+      { property: "og:title", content: "Rowaad — Growth Machines, Engineered." },
+      { property: "og:description", content: "We don't sell advice — we install systems that move money. Founded by Elyes Kallel." },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+function Home() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <PageWrap>
+      <Hero />
+      <Marquee />
+      <ServicesScroll />
+      <WhyRowaad />
+      <OurWork />
+      <FounderSection />
+      <Partners />
+      <InvestSection />
+    </PageWrap>
   );
-}
-
-function Index() {
-  return <PlaceholderIndex />;
 }
