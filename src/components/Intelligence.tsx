@@ -189,7 +189,7 @@ export function Intelligence() {
                   <CartesianGrid stroke={GRID} vertical={false} />
                   <XAxis dataKey="c" stroke={AXIS} fontSize={10} />
                   <YAxis stroke={AXIS} fontSize={11} unit="k" />
-                  <Tooltip contentStyle={tooltipStyle} formatter={(v: number) => `$${v}k`} />
+                  <Tooltip contentStyle={tooltipStyle} formatter={(v) => `$${v}k`} />
                   <Bar dataKey="v" fill="url(#g2)" radius={[8, 8, 0, 0]} animationDuration={1200} />
                 </BarChart>
               </ResponsiveContainer>
