@@ -1,11 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Inbox, FolderKanban, Users, LayoutDashboard, LogOut, Lock } from "lucide-react";
+import { Inbox, FolderKanban, Users, LayoutDashboard, LogOut, Lock, UserSquare2 } from "lucide-react";
 import { CustomCursor } from "@/components/CustomCursor";
 import { AdminInbox } from "@/components/admin/AdminInbox";
 import { AdminProjects } from "@/components/admin/AdminProjects";
 import { AdminPartners } from "@/components/admin/AdminPartners";
+import { AdminTeam } from "@/components/admin/AdminTeam";
 import { AdminHome } from "@/components/admin/AdminHome";
 
 const PIN = "3693";
@@ -23,7 +24,7 @@ export const Route = createFileRoute("/admin")({
 
 function AdminPage() {
   const [authed, setAuthed] = useState(false);
-  const [tab, setTab] = useState<"home" | "inbox" | "projects" | "partners">("home");
+  const [tab, setTab] = useState<"home" | "inbox" | "projects" | "partners" | "team">("home");
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -49,6 +50,7 @@ function AdminPage() {
     { id: "inbox", label: "Inbox", Icon: Inbox },
     { id: "projects", label: "Projects", Icon: FolderKanban },
     { id: "partners", label: "Partners", Icon: Users },
+    { id: "team", label: "Team", Icon: UserSquare2 },
   ] as const;
 
   return (
@@ -108,6 +110,7 @@ function AdminPage() {
               {tab === "inbox" && <AdminInbox />}
               {tab === "projects" && <AdminProjects />}
               {tab === "partners" && <AdminPartners />}
+              {tab === "team" && <AdminTeam />}
             </motion.div>
           </AnimatePresence>
         </main>

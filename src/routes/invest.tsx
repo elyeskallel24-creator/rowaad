@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageWrap } from "@/components/PageWrap";
 import { InvestSection } from "@/components/InvestSection";
+import { InvestArchitecture } from "@/components/InvestArchitecture";
 
 export const Route = createFileRoute("/invest")({
   component: InvestPage,
@@ -17,6 +18,7 @@ function InvestPage() {
     <PageWrap>
       <div className="pt-24" />
       <InvestSection />
+      <InvestArchitecture />
     </PageWrap>
   );
 }

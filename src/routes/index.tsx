@@ -6,6 +6,7 @@ import { ServicesScroll } from "@/components/ServicesScroll";
 import { WhyRowaad } from "@/components/WhyRowaad";
 import { OurWork } from "@/components/OurWork";
 import { FounderSection } from "@/components/FounderSection";
+import { TeamSection } from "@/components/TeamSection";
 import { Partners } from "@/components/Partners";
 import { InvestSection } from "@/components/InvestSection";
 
@@ -30,6 +31,7 @@ function Home() {
       <WhyRowaad />
       <OurWork />
       <FounderSection />
+      <TeamSection />
       <Partners />
       <InvestSection />
     </PageWrap>
