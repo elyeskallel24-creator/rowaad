@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { Gem } from "lucide-react";
-import { Link } from "@tanstack/react-router";
 import { Reveal } from "./Reveal";
 import { useTranslation } from "@/i18n/LanguageContext";
+import { VipModal } from "./VipModal";
 
 export function InvestSection() {
   const { t } = useTranslation();
+  const [vipOpen, setVipOpen] = useState(false);
   return (
     <section id="invest" className="relative overflow-hidden bg-onyx py-28 md:py-40">
       <div className="ambient-orb left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2" style={{ background: "var(--brand-gold)", opacity: 0.18 }} />
@@ -46,15 +48,18 @@ export function InvestSection() {
 
         <Reveal delay={0.5}>
           <div className="mt-12">
-            <Link
-              to="/invest"
+            <button
+              type="button"
+              onClick={() => setVipOpen(true)}
               className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-gold to-amber px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-onyx shadow-[0_20px_60px_-20px_oklch(0.9_0.13_90/0.5)] transition-transform hover:scale-105"
             >
-              {t("invest.cta.full")}
-            </Link>
+              JOIN THE VIP INVESTORS CLUB
+            </button>
           </div>
         </Reveal>
       </div>
+
+      <VipModal open={vipOpen} onClose={() => setVipOpen(false)} />
     </section>
   );
 }

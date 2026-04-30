@@ -41,11 +41,35 @@ export type TeamMember = {
   order: number;
 };
 
+export type Offer = {
+  id: string;
+  title: string;
+  description: string;
+  images: string[]; // up to 6 data URLs
+  ctaLabel: string;
+  ctaUrl: string;
+  status: "published" | "draft";
+  order: number;
+};
+
+export type VipBookingStatus = "new" | "contacted" | "confirmed" | "declined";
+export type VipBooking = {
+  id: string;
+  whatsapp: string;
+  email: string;
+  date: string;
+  time: string;
+  submittedAt: string;
+  status: VipBookingStatus;
+};
+
 const KEYS = {
   contacts: "rowaad:contacts",
   projects: "rowaad:projects",
   partners: "rowaad:partners",
   team: "rowaad_team_members",
+  offers: "rowaad_offers",
+  vip: "rowaad_vip_bookings",
 } as const;
 
 const isBrowser = typeof window !== "undefined";
@@ -128,6 +152,41 @@ export const store = {
   },
   deleteTeamMember: (id: string) => {
     write(KEYS.team, read<TeamMember>(KEYS.team).filter((m) => m.id !== id));
+  },
+
+  // Offers
+  getOffers: () => read<Offer>(KEYS.offers).sort((a, b) => a.order - b.order),
+  saveOffer: (o: Offer) => {
+    const list = read<Offer>(KEYS.offers);
+    const idx = list.findIndex((x) => x.id === o.id);
+    if (idx >= 0) list[idx] = o;
+    else list.push(o);
+    write(KEYS.offers, list);
+  },
+  deleteOffer: (id: string) => {
+    write(KEYS.offers, read<Offer>(KEYS.offers).filter((o) => o.id !== id));
+  },
+
+  // VIP Bookings
+  getVipBookings: () => read<VipBooking>(KEYS.vip),
+  addVipBooking: (b: Omit<VipBooking, "id" | "submittedAt" | "status">) => {
+    const list = read<VipBooking>(KEYS.vip);
+    const item: VipBooking = {
+      ...b,
+      id: crypto.randomUUID(),
+      submittedAt: new Date().toISOString(),
+      status: "new",
+    };
+    list.unshift(item);
+    write(KEYS.vip, list);
+    return item;
+  },
+  updateVipBooking: (id: string, patch: Partial<VipBooking>) => {
+    const list = read<VipBooking>(KEYS.vip).map((b) => (b.id === id ? { ...b, ...patch } : b));
+    write(KEYS.vip, list);
+  },
+  deleteVipBooking: (id: string) => {
+    write(KEYS.vip, read<VipBooking>(KEYS.vip).filter((b) => b.id !== id));
   },
 };
 
