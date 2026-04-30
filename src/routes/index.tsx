@@ -3,6 +3,7 @@ import { PageWrap } from "@/components/PageWrap";
 import { Hero } from "@/components/Hero";
 import { Marquee } from "@/components/Marquee";
 import { ServicesScroll } from "@/components/ServicesScroll";
+import { WeOffer } from "@/components/WeOffer";
 import { WhyRowaad } from "@/components/WhyRowaad";
 import { OurWork } from "@/components/OurWork";
 import { FounderSection } from "@/components/FounderSection";
@@ -28,6 +29,7 @@ function Home() {
       <Hero />
       <Marquee />
       <ServicesScroll />
+      <WeOffer />
       <WhyRowaad />
       <OurWork />
       <FounderSection />
