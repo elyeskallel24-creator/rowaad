@@ -14,6 +14,7 @@ export function Footer() {
     { to: "/services", key: "nav.services" },
     { to: "/work", key: "nav.work" },
     { to: "/intelligence", key: "nav.intelligence" },
+    { to: "/blog", key: "nav.blog" },
     { to: "/about", key: "nav.about" },
     { to: "/invest", key: "nav.invest" },
     { to: "/contact", key: "nav.contact" },

@@ -56,8 +56,8 @@ export function VipModal({ open, onClose }: { open: boolean; onClose: () => void
     }
   };
 
-  const inputCls = "w-full rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none transition-colors";
-  const inputStyle = { background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)" } as const;
+  const inputCls = "w-full rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none transition-colors";
+  const inputStyle = { background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "#FFFFFF", caretColor: "#FFE072" } as React.CSSProperties;
 
   return (
     <AnimatePresence>
@@ -76,14 +76,6 @@ export function VipModal({ open, onClose }: { open: boolean; onClose: () => void
             <div className="absolute h-[600px] w-[600px] rounded-full" style={{ background: "radial-gradient(circle, #FF7A20 0%, transparent 70%)", opacity: 0.03, animation: "vipDrift2 25s ease-in-out infinite", right: "5%", bottom: "5%" }} />
           </div>
 
-          {/* Laser sweep */}
-          <motion.div
-            initial={{ x: "-100%" }}
-            animate={{ x: "100%" }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="pointer-events-none absolute inset-y-0 z-10 w-24"
-            style={{ background: "linear-gradient(90deg, transparent, #FFE072, transparent)", opacity: 0.6, mixBlendMode: "screen" }}
-          />
 
           <button
             onClick={onClose}

@@ -63,6 +63,27 @@ export type VipBooking = {
   status: VipBookingStatus;
 };
 
+export type BlogAuthor = {
+  name: string;
+  role: string;
+  photo: string; // data URL
+};
+
+export type BlogPost = {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  body: string;
+  coverImage: string; // data URL or ""
+  bodyImage: string;  // data URL or ""
+  author: BlogAuthor;
+  publishDate: string; // YYYY-MM-DD
+  status: "published" | "draft";
+  order: number;
+  createdAt: string;
+};
+
 const KEYS = {
   contacts: "rowaad:contacts",
   projects: "rowaad:projects",
@@ -70,6 +91,8 @@ const KEYS = {
   team: "rowaad_team_members",
   offers: "rowaad_offers",
   vip: "rowaad_vip_bookings",
+  blogPosts: "rowaad_blog_posts",
+  blogAuthor: "rowaad_blog_author",
 } as const;
 
 const isBrowser = typeof window !== "undefined";
@@ -187,6 +210,33 @@ export const store = {
   },
   deleteVipBooking: (id: string) => {
     write(KEYS.vip, read<VipBooking>(KEYS.vip).filter((b) => b.id !== id));
+  },
+
+  // Blog Author
+  getBlogAuthor: (): BlogAuthor => {
+    if (!isBrowser) return { name: "", role: "", photo: "" };
+    try {
+      const raw = localStorage.getItem(KEYS.blogAuthor);
+      return raw ? JSON.parse(raw) : { name: "", role: "", photo: "" };
+    } catch { return { name: "", role: "", photo: "" }; }
+  },
+  saveBlogAuthor: (a: BlogAuthor) => {
+    if (!isBrowser) return;
+    localStorage.setItem(KEYS.blogAuthor, JSON.stringify(a));
+    window.dispatchEvent(new CustomEvent("rowaad:store", { detail: { key: KEYS.blogAuthor } }));
+  },
+
+  // Blog Posts
+  getBlogPosts: () => read<BlogPost>(KEYS.blogPosts).sort((a, b) => a.order - b.order),
+  saveBlogPost: (p: BlogPost) => {
+    const list = read<BlogPost>(KEYS.blogPosts);
+    const idx = list.findIndex((x) => x.id === p.id);
+    if (idx >= 0) list[idx] = p;
+    else list.push(p);
+    write(KEYS.blogPosts, list);
+  },
+  deleteBlogPost: (id: string) => {
+    write(KEYS.blogPosts, read<BlogPost>(KEYS.blogPosts).filter((p) => p.id !== id));
   },
 };
 

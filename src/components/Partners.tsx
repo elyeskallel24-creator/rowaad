@@ -27,20 +27,35 @@ export function Partners() {
             </div>
           </Reveal>
         ) : (
-          <div className="mt-14 grid grid-cols-2 items-center gap-x-10 gap-y-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+          <div className="mt-14 grid grid-cols-2 items-start gap-x-8 gap-y-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {partners.map((p) => {
               const Tag = p.website ? "a" : "div";
               return (
                 <Tag
                   key={p.id}
                   {...(p.website ? { href: p.website, target: "_blank", rel: "noreferrer" } : {})}
-                  className="flex h-20 items-center justify-center"
+                  className="flex flex-col items-center"
                 >
-                  <img
-                    src={p.logo}
-                    alt={p.name}
-                    className="max-h-12 w-auto opacity-50 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0"
-                  />
+                  <div className="flex items-center justify-center" style={{ width: 180, height: 80 }}>
+                    <img
+                      src={p.logo}
+                      alt={p.name}
+                      style={{ width: 180, height: 80, objectFit: "contain" }}
+                      className="opacity-70 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0"
+                    />
+                  </div>
+                  <p
+                    className="mt-[10px] text-center uppercase"
+                    style={{
+                      fontFamily: "var(--font-sans)",
+                      fontSize: 13,
+                      color: "rgba(255,255,255,0.55)",
+                      letterSpacing: "0.08em",
+                      maxWidth: 160,
+                    }}
+                  >
+                    {p.name}
+                  </p>
                 </Tag>
               );
             })}
