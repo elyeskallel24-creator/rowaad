@@ -113,9 +113,21 @@ export const translations: Dict = {
   "invest.title1": { en: "Invest in", fr: "Investissez dans" },
   "invest.title2": { en: "what we build.", fr: "ce que nous construisons." },
   "invest.body": {
-    en: "Rowaad doesn't just serve businesses, we build them. Every project we launch is owned entirely by Rowaad. Selected investors receive monthly revenue distributions from our portfolio of ventures.",
-    fr: "Rowaad ne se contente pas de servir des entreprises, nous les construisons. Chaque projet que nous lançons est entièrement détenu par Rowaad. Les investisseurs sélectionnés reçoivent des distributions mensuelles de revenus issues de notre portefeuille de ventures.",
+    en: "Rowaad doesn't just serve businesses, we build and scale them. We launch and operate ventures, giving selected investors access to monthly revenue distributions across our portfolio.",
+    fr: "Rowaad ne se contente pas de servir des entreprises, nous les construisons et les développons. Nous lançons et opérons des ventures, donnant à des investisseurs sélectionnés accès à des distributions mensuelles de revenus à travers notre portefeuille.",
   },
+
+  // Blog
+  "nav.blog": { en: "Blog", fr: "Blog" },
+  "blog.eyebrow": { en: "Insights. Systems. Signal.", fr: "Insights. Systèmes. Signal." },
+  "blog.title": { en: "THE ROWAAD BLOG", fr: "LE BLOG ROWAAD" },
+  "blog.sub": {
+    en: "Raw thinking from the operators behind the systems. No fluff. No filler. Only what moves the needle.",
+    fr: "La pensée brute des opérateurs derrière les systèmes. Sans fioritures. Sans remplissage. Uniquement ce qui fait avancer les choses.",
+  },
+  "blog.empty": { en: "No posts yet. Check back soon.", fr: "Aucun article pour l'instant. Revenez bientôt." },
+  "blog.readMore": { en: "Read more →", fr: "Lire la suite →" },
+  "blog.back": { en: "← Back to Blog", fr: "← Retour au Blog" },
   "invest.cta": { en: "Explore Investment Opportunities", fr: "Explorer les Opportunités d'Investissement" },
   "invest.cta.full": { en: "See the Full Investment Architecture", fr: "Voir l'Architecture d'Investissement Complète" },
   "invest.stat.owned": { en: "Owned", fr: "Détenu" },
