@@ -1,5 +1,6 @@
 import { Crown, GitBranch, Cpu, Layers, Maximize2, Gem } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { Reveal } from "./Reveal";
 import { useTranslation } from "@/i18n/LanguageContext";
 
@@ -7,6 +8,7 @@ export function ServicesScroll() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const { t } = useTranslation();
 
   const SERVICES = [
@@ -19,6 +21,15 @@ export function ServicesScroll() {
   ];
 
   useEffect(() => {
+    const mq = window.matchMedia("(max-width: 1024px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return;
     const onScroll = () => {
       const wrap = wrapRef.current;
       const track = trackRef.current;
@@ -34,7 +45,46 @@ export function ServicesScroll() {
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) {
+    return (
+      <section id="services" className="relative bg-onyx py-20">
+        <div className="ambient-orb left-1/3 top-1/4 h-[500px] w-[500px]" style={{ background: "var(--brand-orange)", opacity: 0.18 }} />
+        <div className="relative mx-auto max-w-7xl px-6">
+          <Reveal>
+            <p className="text-xs uppercase tracking-[0.32em] text-orange">{t("services.eyebrow")}</p>
+            <h2 className="mt-3 font-display text-5xl uppercase leading-none md:text-7xl">
+              {t("services.title1")} <span className="text-gradient-fire">{t("services.title2")}</span>
+            </h2>
+          </Reveal>
+          <div className="mt-12 flex flex-col gap-5">
+            {SERVICES.map((s, i) => (
+              <motion.article
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5 }}
+                className="glass relative flex flex-col justify-between rounded-3xl p-7"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-fire text-onyx">
+                    <s.icon className="h-7 w-7" />
+                  </div>
+                  <span className="font-display text-3xl text-orange/40">0{i + 1}</span>
+                </div>
+                <div className="mt-6">
+                  <h3 className="font-display text-3xl uppercase leading-tight">{t(s.titleKey)}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/70">{t(s.bodyKey)}</p>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="services" ref={wrapRef} className="relative" style={{ height: `${SERVICES.length * 80}vh` }}>
