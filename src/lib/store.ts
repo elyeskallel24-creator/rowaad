@@ -211,6 +211,33 @@ export const store = {
   deleteVipBooking: (id: string) => {
     write(KEYS.vip, read<VipBooking>(KEYS.vip).filter((b) => b.id !== id));
   },
+
+  // Blog Author
+  getBlogAuthor: (): BlogAuthor => {
+    if (!isBrowser) return { name: "", role: "", photo: "" };
+    try {
+      const raw = localStorage.getItem(KEYS.blogAuthor);
+      return raw ? JSON.parse(raw) : { name: "", role: "", photo: "" };
+    } catch { return { name: "", role: "", photo: "" }; }
+  },
+  saveBlogAuthor: (a: BlogAuthor) => {
+    if (!isBrowser) return;
+    localStorage.setItem(KEYS.blogAuthor, JSON.stringify(a));
+    window.dispatchEvent(new CustomEvent("rowaad:store", { detail: { key: KEYS.blogAuthor } }));
+  },
+
+  // Blog Posts
+  getBlogPosts: () => read<BlogPost>(KEYS.blogPosts).sort((a, b) => a.order - b.order),
+  saveBlogPost: (p: BlogPost) => {
+    const list = read<BlogPost>(KEYS.blogPosts);
+    const idx = list.findIndex((x) => x.id === p.id);
+    if (idx >= 0) list[idx] = p;
+    else list.push(p);
+    write(KEYS.blogPosts, list);
+  },
+  deleteBlogPost: (id: string) => {
+    write(KEYS.blogPosts, read<BlogPost>(KEYS.blogPosts).filter((p) => p.id !== id));
+  },
 };
 
 export function useStoreSubscription(cb: () => void) {
