@@ -63,6 +63,27 @@ export type VipBooking = {
   status: VipBookingStatus;
 };
 
+export type BlogAuthor = {
+  name: string;
+  role: string;
+  photo: string; // data URL
+};
+
+export type BlogPost = {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  body: string;
+  coverImage: string; // data URL or ""
+  bodyImage: string;  // data URL or ""
+  author: BlogAuthor;
+  publishDate: string; // YYYY-MM-DD
+  status: "published" | "draft";
+  order: number;
+  createdAt: string;
+};
+
 const KEYS = {
   contacts: "rowaad:contacts",
   projects: "rowaad:projects",
@@ -70,6 +91,8 @@ const KEYS = {
   team: "rowaad_team_members",
   offers: "rowaad_offers",
   vip: "rowaad_vip_bookings",
+  blogPosts: "rowaad_blog_posts",
+  blogAuthor: "rowaad_blog_author",
 } as const;
 
 const isBrowser = typeof window !== "undefined";
