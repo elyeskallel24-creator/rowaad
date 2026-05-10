@@ -128,7 +128,7 @@ export function VipModal({ open, onClose }: { open: boolean; onClose: () => void
                   <FormField label="WhatsApp Number" error={errors.whatsapp}>
                     <input
                       type="tel"
-                      placeholder="+1 234 567 8900"
+                      placeholder="Your WhatsApp number"
                       value={form.whatsapp}
                       onChange={(e) => setForm({ ...form, whatsapp: e.target.value })}
                       className={inputCls + " vip-input"}
