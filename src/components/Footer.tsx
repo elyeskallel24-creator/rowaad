@@ -35,7 +35,7 @@ export function Footer() {
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-14 md:grid-cols-3">
         <div>
-          <span className="font-display text-3xl uppercase tracking-[0.2em] text-foreground">ROWAAD</span>
+          <span className="font-display text-4xl uppercase tracking-[0.32em] text-orange" style={{ textShadow: "0 0 28px rgba(255,108,0,0.4)" }}>ROWAAD</span>
           <p className="mt-4 text-sm text-muted-foreground">{t("footer.copy")}</p>
         </div>
 
