@@ -50,7 +50,7 @@ export function Navbar() {
             }`}
           >
             <Link to="/" className="flex shrink-0 items-center gap-2 pl-1">
-              <img src={logo} alt="Rowaad" className="h-9 w-auto" />
+              <span className="font-display text-xl uppercase tracking-[0.2em] text-foreground">ROWAAD</span>
             </Link>
 
             <ul className="hidden items-center gap-0.5 lg:flex">
@@ -88,7 +88,7 @@ export function Navbar() {
       {open && (
         <div className="fixed inset-0 z-[60] flex flex-col bg-onyx/95 backdrop-blur-xl md:hidden">
           <div className="flex items-center justify-between p-5">
-            <img src={logo} alt="Rowaad" className="h-9" />
+            <span className="font-display text-xl uppercase tracking-[0.2em] text-foreground">ROWAAD</span>
             <button onClick={() => setOpen(false)} aria-label="Close" className="rounded-full border border-white/15 p-2">
               <X className="h-5 w-5" />
             </button>

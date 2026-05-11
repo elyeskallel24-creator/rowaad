@@ -35,7 +35,7 @@ export function Footer() {
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-14 md:grid-cols-3">
         <div>
-          <img src={logo} alt="Rowaad" className="h-10" />
+          <span className="font-display text-3xl uppercase tracking-[0.2em] text-foreground">ROWAAD</span>
           <p className="mt-4 text-sm text-muted-foreground">{t("footer.copy")}</p>
         </div>
 
