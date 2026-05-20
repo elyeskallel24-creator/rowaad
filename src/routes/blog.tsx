@@ -10,7 +10,9 @@ export const Route = createFileRoute("/blog")({
       { name: "description", content: "Insights. Systems. Signal. Raw thinking from the operators behind Rowaad's growth systems." },
       { property: "og:title", content: "The Rowaad Blog" },
       { property: "og:description", content: "Raw thinking from the operators behind the systems." },
+      { property: "og:url", content: "https://rowaad.lovable.app/blog" },
     ],
+    links: [{ rel: "canonical", href: "https://rowaad.lovable.app/blog" }],
   }),
 });
 
