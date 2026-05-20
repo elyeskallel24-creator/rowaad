@@ -19,7 +19,9 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Rowaad is the elite growth agency installing revenue systems for high-end B2B companies and operators ready to scale." },
       { property: "og:title", content: "Rowaad — Growth Machines, Engineered." },
       { property: "og:description", content: "We don't sell advice — we install systems that move money. Founded by Elyes Kallel." },
+      { property: "og:url", content: "https://rowaad.lovable.app/" },
     ],
+    links: [{ rel: "canonical", href: "https://rowaad.lovable.app/" }],
   }),
 });
 

@@ -9,7 +9,11 @@ export const Route = createFileRoute("/services")({
     meta: [
       { title: "Services — Rowaad Growth Stack" },
       { name: "description", content: "The Rowaad Growth Stack: Fractional CGO, Revenue Systems, Ecosystem Overhaul, Custom AI Stacks, Scale Architecture, and Ventures." },
+      { property: "og:title", content: "Services — Rowaad Growth Stack" },
+      { property: "og:description", content: "Fractional CGO, Revenue Systems, Ecosystem Overhaul, AI Stacks, Scale Architecture, and Ventures." },
+      { property: "og:url", content: "https://rowaad.lovable.app/services" },
     ],
+    links: [{ rel: "canonical", href: "https://rowaad.lovable.app/services" }],
   }),
 });
 

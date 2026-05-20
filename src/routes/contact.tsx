@@ -12,7 +12,11 @@ export const Route = createFileRoute("/contact")({
     meta: [
       { title: "Contact — Rowaad" },
       { name: "description", content: "Book a strategy call with Rowaad. Limited clients. Qualification only." },
+      { property: "og:title", content: "Contact — Rowaad" },
+      { property: "og:description", content: "Book a strategy call with Rowaad. Limited clients. Qualification only." },
+      { property: "og:url", content: "https://rowaad.lovable.app/contact" },
     ],
+    links: [{ rel: "canonical", href: "https://rowaad.lovable.app/contact" }],
   }),
 });
 

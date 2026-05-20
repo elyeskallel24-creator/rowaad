@@ -9,7 +9,11 @@ export const Route = createFileRoute("/work")({
     meta: [
       { title: "Our Work — Rowaad" },
       { name: "description", content: "Built. Shipped. Scaled. A curated portfolio of Rowaad ventures and client systems." },
+      { property: "og:title", content: "Our Work — Rowaad" },
+      { property: "og:description", content: "Built. Shipped. Scaled. A curated portfolio of Rowaad ventures and client systems." },
+      { property: "og:url", content: "https://rowaad.lovable.app/work" },
     ],
+    links: [{ rel: "canonical", href: "https://rowaad.lovable.app/work" }],
   }),
 });
 
