@@ -88,7 +88,7 @@ export function Navbar() {
       {open && (
         <div className="fixed inset-0 z-[60] flex flex-col bg-onyx/95 backdrop-blur-xl md:hidden">
           <div className="flex items-center justify-between p-5">
-            <img src={logo} alt="Rowaad" className="h-10 w-auto" />
+            <img src={logo} alt="Rowaad" className="h-16 w-auto" />
             <button onClick={() => setOpen(false)} aria-label="Close" className="rounded-full border border-white/15 p-2">
               <X className="h-5 w-5" />
             </button>
