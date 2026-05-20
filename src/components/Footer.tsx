@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { MagneticButton } from "./MagneticButton";
 import { useState } from "react";
 import { ContactModal } from "./ContactModal";
-import logo from "@/assets/rowaad-logo.png";
+import logo from "@/assets/rowaad-logo-new.png";
 import { useTranslation } from "@/i18n/LanguageContext";
 
 export function Footer() {
@@ -35,7 +35,7 @@ export function Footer() {
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-14 md:grid-cols-3">
         <div>
-          <span className="font-display text-4xl uppercase tracking-[0.32em] text-orange" style={{ textShadow: "0 0 28px rgba(255,108,0,0.4)" }}>ROWAAD</span>
+          <img src={logo} alt="Rowaad" className="h-16 w-auto" />
           <p className="mt-4 text-sm text-muted-foreground">{t("footer.copy")}</p>
         </div>
 

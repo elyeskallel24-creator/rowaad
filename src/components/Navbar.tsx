@@ -2,7 +2,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { MagneticButton } from "./MagneticButton";
-import logo from "@/assets/rowaad-logo.png";
+import logo from "@/assets/rowaad-logo-new.png";
 import { ContactModal } from "./ContactModal";
 import { LanguageToggle } from "./LanguageToggle";
 import { useTranslation } from "@/i18n/LanguageContext";
@@ -49,8 +49,8 @@ export function Navbar() {
               scrolled ? "glass-dark shadow-2xl" : "bg-transparent"
             }`}
           >
-            <Link to="/" className="flex shrink-0 items-center gap-2 pl-1">
-              <span className="font-display text-2xl uppercase tracking-[0.32em] text-orange" style={{ textShadow: "0 0 24px rgba(255,108,0,0.35)" }}>ROWAAD</span>
+            <Link to="/" aria-label="Rowaad — Home" className="flex shrink-0 items-center pl-1">
+              <img src={logo} alt="Rowaad" className="h-10 w-auto md:h-12" loading="eager" decoding="async" />
             </Link>
 
             <ul className="hidden items-center gap-0.5 lg:flex">
@@ -88,7 +88,7 @@ export function Navbar() {
       {open && (
         <div className="fixed inset-0 z-[60] flex flex-col bg-onyx/95 backdrop-blur-xl md:hidden">
           <div className="flex items-center justify-between p-5">
-            <span className="font-display text-2xl uppercase tracking-[0.32em] text-orange" style={{ textShadow: "0 0 24px rgba(255,108,0,0.35)" }}>ROWAAD</span>
+            <img src={logo} alt="Rowaad" className="h-10 w-auto" />
             <button onClick={() => setOpen(false)} aria-label="Close" className="rounded-full border border-white/15 p-2">
               <X className="h-5 w-5" />
             </button>
