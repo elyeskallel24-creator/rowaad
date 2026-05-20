@@ -50,7 +50,7 @@ export function Navbar() {
             }`}
           >
             <Link to="/" aria-label="Rowaad — Home" className="flex shrink-0 items-center pl-1">
-              <img src={logo} alt="Rowaad" className="h-10 w-auto md:h-12" loading="eager" decoding="async" />
+              <img src={logo} alt="Rowaad" className="h-16 w-auto md:h-20" loading="eager" decoding="async" />
             </Link>
 
             <ul className="hidden items-center gap-0.5 lg:flex">
